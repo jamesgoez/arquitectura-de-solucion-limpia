@@ -1,0 +1,17 @@
+rootProject.name = 'base-project'
+
+include ':base-project-backend-service'
+include ':business'
+include ':usecase'
+include ':model'
+include ':reactive-web'
+include ':reactive-repository'
+include ':rest-consumer'
+
+project(':base-project-backend-service').projectDir = file('./applications/base-project-backend-service')
+project(':business').projectDir = file('./domain/business')
+project(':usecase').projectDir = file('./domain/usecase')
+project(':model').projectDir = file('./domain/model')
+project(':reactive-web').projectDir = file('./infrastructure/entry-points/reactive-web')
+project(':reactive-repository').projectDir = file('./infrastructure/driven-adapters/reactive-repository')
+project(':rest-consumer').projectDir = file('./infrastructure/driven-adapters/rest-consumer')

@@ -1,0 +1,39 @@
+buildscript {
+	ext {
+		cleanArchitectureVersion = '1.9.8'
+		springBootVersion = '2.4.2'
+		sonarVersion = '3.0'
+		jacocoVersion = '0.8.5'
+        lombokVersion = '1.18.16'
+		springCloudVersion = 'Greenwich.SR5'
+		junitBomVersion = '5.8.1'
+		junitPlatformRunner = '1.2.0'
+		junitJupiterEngine = '5.6.1'
+		junitVintageEngine = '5.6.1'
+		mockitoCoreVersion = '2.21.0'
+		mockitoJunitJupiter = '2.23.0'
+		flywayVersion = '8.0.5'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/milestone" }
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://plugins.gradle.org/m2/" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+plugins {
+	id 'co.com.bancolombia.cleanArchitecture' version "${cleanArchitectureVersion}"
+	id 'org.springframework.boot' version "${springBootVersion}" apply false
+	id "io.spring.dependency-management"  version "1.0.11.RELEASE"
+	id 'org.sonarqube' version "${sonarVersion}"
+	id 'jacoco'
+	id 'java'
+	id 'application'
+}
+
+apply from: './sonar.gradle'
+apply from: './main.gradle'
